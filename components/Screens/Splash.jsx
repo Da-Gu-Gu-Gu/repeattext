@@ -5,7 +5,7 @@ import { Colors } from '../Colors/Colors';
 const Splash=({navigation})=>{
 
     setTimeout(()=>{
-        navigation.navigate('HOME')
+        navigation.navigate('Index')
     },
     3000)
 

@@ -10,7 +10,7 @@ const CustomInput=(props)=>{
             height:props.multi?150:40,
             width:props.multi?null:55
             }]}
-            // defaultValue={props.multi?null:1}
+            value={props.value.toString()}
             autoFocus={props.focus}
             multiline={props.multi}
             editable={props.edit}

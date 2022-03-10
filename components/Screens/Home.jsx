@@ -2,27 +2,29 @@ import React,{useState} from 'react'
 import {ScrollView,View,StyleSheet,TouchableWithoutFeedback,Keyboard,Text,Alert} from 'react-native'
 import { Colors } from '../Colors/Colors'
 import CustomInput from '../common/CustomInput'
-import Header from '../common/Header'
-import CustomSwitch from '../common/CustomSwitch'
+import Options from '../common/Options'
 import Result from '../common/Result'
 import ConfirmButton from '../common/ConfirmButton'
 
+ 
 const Home = () => {
 
   const [input,setInput]=useState('')
   const [count,setCount]=useState(1)
   const [result,setResult]=useState('')
   const [isEnabled, setIsEnabled] = useState(false);
-
+  const [order, setOrder] = useState(false);
 
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+  const orederSwitch = () => setOrder(previousState => !previousState);
 
   const textHandler=(x)=>{
     setInput(x)
   }
 
   const lineHandler=(x)=>{
-    let aa=x.replace(/[^0-9]/g,'')
+    let aa=x.replace(/\D/gm, "")
     aa>0?setCount(aa):setCount(1)
   }
 
@@ -32,8 +34,6 @@ const Home = () => {
       let res=[]
       Keyboard.dismiss()
       let chooseNumber=Number(count)
-      console.log(chooseNumber)
-      console.log(input)
       if(chooseNumber===0 || input.length<1){
         Alert.alert("Fail!",
         "Please Fill All Data",
@@ -46,32 +46,32 @@ const Home = () => {
       [{text:'Okay',style:'destructive'}])
       return;
   }
-      for(let i=0;i<chooseNumber;i++){
-          res.push(input)
-          console.log('gway si')
+      for(let i=1;i<=chooseNumber;i++){
+          order?res.push(i+"."+input):res.push(input)
       }
       isEnabled?setResult(res.join('\n')):setResult(res)
-  }
+  } 
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-    <View style={styles.view}>
-        <Header/>
+    <ScrollView style={styles.view}>
         <ScrollView style={styles.content}>
         <CustomInput value={input} change={textHandler} multi={true} edit={true} keyboard={"default"} text={"Enter your text"} focus={true} />
         <CustomInput value={count} change={lineHandler} multi={false} edit={true} keyboard={"numeric"} text={"Number of Lines"} focus={false} />
-        <CustomSwitch change={toggleSwitch} />
+        <Options line={toggleSwitch} order={orederSwitch} />
         <ConfirmButton confirm={confirm} />
         <Result res={result} />
         </ScrollView>
-    </View>
+    </ScrollView>
     </TouchableWithoutFeedback>
   )
 }
 
+
 const styles=StyleSheet.create({
     view:{
         flex:1,
+        paddingTop:10,
         backgroundColor:Colors.background,
     },
     content:{

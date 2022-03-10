@@ -13,14 +13,13 @@ const Header=()=>{
 
 const styles=StyleSheet.create({
     header:{
-        paddingTop:20,
+        paddingTop:15,
         width:'100%',
         height:100,
         backgroundColor:Colors.background,
         alignItems:'center',
         justifyContent:'center',
         elevation:13,
-        marginBottom:50,
     },
     img:{
         width:65,
