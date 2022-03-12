@@ -1,5 +1,4 @@
 import {ScrollView,View,StyleSheet,Text,Image,TouchableOpacity} from 'react-native'
-import { Colors } from '../Colors/Colors'
 import * as Clipboard from 'expo-clipboard';
 
 
@@ -31,8 +30,6 @@ const styles=StyleSheet.create({
     container:{
         marginTop:20,
         flex:1,
-        // borderWidth:2,
-        // borderColor:Colors.text
     },
     res:{
         width:'100%',

@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {ScrollView,View,StyleSheet,TouchableWithoutFeedback,Keyboard,Text,Alert} from 'react-native'
+import {ScrollView,StyleSheet,TouchableWithoutFeedback,Keyboard,Text,Alert} from 'react-native'
 import { Colors } from '../Colors/Colors'
 import CustomInput from '../common/CustomInput'
 import Options from '../common/Options'
